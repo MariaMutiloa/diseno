@@ -13,14 +13,5 @@ public interface IDoorServer extends Remote
 	 */
 	String sayHello() throws RemoteException;
 	
-	/**
-	 * Print message to client
-	 * @param login
-	 * @param password
-	 * @param message
-	 * @return Message
-	 * @throws RemoteException
-	 */
-	String sayMessage(String login, String password, String message) throws RemoteException, InvalidUser;
 
 }
