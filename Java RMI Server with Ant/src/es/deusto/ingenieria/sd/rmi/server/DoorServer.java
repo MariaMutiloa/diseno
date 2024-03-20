@@ -21,27 +21,9 @@ public class DoorServer extends UnicastRemoteObject implements IDoorServer {
 	}
 
 	@Override
-	public String sayHello() 
-	{
-		cont++;
-		System.out.println(" * Client number: " + cont);
-		return "Hello World!";
-	}
-	
-	@Override
-	public String sayMessage(String login, String password, String message) throws RemoteException, InvalidUser
-	{
-		if (registeredUsers.containsValue(login)) {
-
-			if (registeredUsers.get(login).contentEquals(password)) {
-				return message;
-			} else {
-				throw new InvalidUser("Incorrect password for user " + login);
-			}
-
-		} else {
-			throw new InvalidUser("User name " + login + "is not present among the registered users");
-		}
+	public Boolean OK(String codigo) throws RemoteException{
+		Boolean valor= false;
+		return valor;
 	}
 
 	public static void main(String[] args) {

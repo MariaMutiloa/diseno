@@ -4,7 +4,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 import es.deusto.ingenieria.sd.rmi.server.IClient;
-import es.deusto.ingenieria.sd.rmi.server.InvalidUser;
 
 public class Client {
 
@@ -28,7 +27,6 @@ public class Client {
 			String name = "//" + args[0] + ":" + args[1] + "/" + args[2];
 			//stubServer = (IServer) java.rmi.Naming.lookup(name);
 			stubServer = (IClient) registry.lookup(name);
-			System.out.println("* Message coming from the server: '" + stubServer.sayHello() + "'");
     		String responseBody = stubServer.obtenerApartamentos(url, token);
     		System.out.println("Los apartamentos son: '" + responseBody + "'");
 		}

@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.Date;
 
 
 public class Client extends UnicastRemoteObject implements IClient {
@@ -28,30 +30,6 @@ public class Client extends UnicastRemoteObject implements IClient {
 	{
 		super();
 		registeredUsers = new HashMap<String, String> ();
-	}
-
-	@Override
-	public String sayHello() 
-	{
-		cont++;
-		System.out.println(" * Client number: " + cont);
-		return "Hello World!";
-	}
-	
-	@Override
-	public String sayMessage(String login, String password, String message) throws RemoteException, InvalidUser
-	{
-		if (registeredUsers.containsValue(login)) {
-
-			if (registeredUsers.get(login).contentEquals(password)) {
-				return message;
-			} else {
-				throw new InvalidUser("Incorrect password for user " + login);
-			}
-
-		} else {
-			throw new InvalidUser("User name " + login + "is not present among the registered users");
-		}
 	}
 
 	@Override
@@ -85,6 +63,50 @@ public class Client extends UnicastRemoteObject implements IClient {
 		
 	}
 
+	 @Override
+    public ArrayList<Reserva> FetchHistorial(Usuario usuario) throws RemoteException {
+        return new ArrayList<Reserva>(); 
+    }
+
+	@Override
+	public void LogIn (String usuario, String contrasena) throws RemoteException{
+	}
+
+	@Override
+	public void Registrar (String usuario, String contraseña, String nombre, String email) throws RemoteException{
+	}
+	
+	@Override
+	public void GuardarPerfil (String usuario, String contraseña, String nombre, String email) throws RemoteException{
+	}
+
+	@Override
+	public ArrayList <Alojamiento> FetchAlojamiento() throws RemoteException{
+		return new ArrayList<Alojamiento>();
+	}
+
+	@Override
+	public HashMap<Alojamiento, Alojamiento_caracteristicas> FetchCaracteristicas( Alojamiento alojamiento) throws RemoteException{
+		return new HashMap<Alojamiento, Alojamiento_caracteristicas>();
+	}
+
+	@Override
+	public void ActualizarFiltros(Date fecha, Integer precio, ArrayList<Alojamiento_caracteristicas> caracteristicas) throws RemoteException{
+	}
+
+	@Override
+	public ArrayList<Habitacion> FetchHabitaciones(Alojamiento alojamiento) throws RemoteException{
+		return new ArrayList<Habitacion>();
+	}
+
+	@Override
+	public HashMap<Habitacion, Habitacion_caracteristicas> ActualizarFiltrosHabitacioenes(Date fecha, Integer precio, ArrayList<Habitacion_caracteristicas> caracteristica) throws RemoteException{
+		return new HashMap<Habitacion, Habitacion_caracteristicas>();
+	}
+
+	@Override
+	public void EfectuarReserva(Reserva reserva) throws RemoteException{
+	}
 
 	public static void main(String[] args) {
 		if (args.length != 3) {
